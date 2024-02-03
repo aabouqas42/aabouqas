@@ -18,13 +18,16 @@
 
         <EditText
             android:id="@+id/_res"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:layout_weight="1"
+            android:background="#00FFFFFF"
             android:ems="10"
             android:gravity="right"
             android:hint="0"
             android:inputType="number"
+            android:padding="10dp"
             android:textColorHighlight="#000000"
             android:textColorLink="#000000"
             android:textSize="100dp" />
@@ -46,7 +49,7 @@
 
             <Button
                 android:id="@+id/b1"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
@@ -56,7 +59,7 @@
 
             <Button
                 android:id="@+id/b2"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
@@ -66,7 +69,7 @@
 
             <Button
                 android:id="@+id/b3"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
@@ -85,7 +88,7 @@
 
             <Button
                 android:id="@+id/b4"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
@@ -95,7 +98,7 @@
 
             <Button
                 android:id="@+id/b5"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
@@ -105,7 +108,7 @@
 
             <Button
                 android:id="@+id/b6"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
@@ -124,7 +127,7 @@
 
             <Button
                 android:id="@+id/b7"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
@@ -134,7 +137,7 @@
 
             <Button
                 android:id="@+id/b8"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
@@ -144,7 +147,7 @@
 
             <Button
                 android:id="@+id/b9"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
@@ -184,6 +187,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="0"
                 android:textSize="24sp" />
 
@@ -264,9 +268,11 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/aabouqas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10px"
+                android:padding="10dp"
                 android:shadowColor="#FFFFFF"
                 android:text="@string/username"
                 android:textColor="#FFFFFF"
