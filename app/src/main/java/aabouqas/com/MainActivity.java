@@ -1,10 +1,8 @@
 package aabouqas.com;
 
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,18 +15,31 @@ import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
-    void click(Button btn, TextView res, String str) {
+    private static int num1 = 0;
+    private static int num2 = 0;
+    private  boolean num1IsSet = false;
+    private static int nums = 0;
+    private static String operator = "";
+
+    void click(Button btn, TextView res, String str, TextView to_show) {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (res.getText().toString().length() > 10 || res.getText().toString().equals("0") && str.equals("0"))
-                    return;
-                if (res.getText().toString().length() > 4 && (res.getTextSize() / 4) > 35) {
-                    res.setTextSize(res.getTextSize() / 4);
-                }
-                if (str.equals("%") && res.getText().toString().contains("%"))
-                        return;
-                res.setText(res.getText().toString() + str);
+                if (!str.equals("+"))
+                    res.setText(res.getText().toString() + str);
+               if (str.equals("+"))
+               {
+                   nums = Integer.parseInt(res.getText().toString());
+                   res.setText("");
+               }
+               if (res.getText().toString().length() > 0)
+//                   to_show.setText(Integer.parseInt(res.getText().toString()));
+//               show_msg(res.getText().toString());
+//                if (num1 != 0 && operator.length() > 0)
+//                {
+//                    if (operator.equals("+"))
+//                        show_msg(String.valueOf(num1 + num2));
+//                }
             }
         });
     }
@@ -36,6 +47,26 @@ public class MainActivity extends AppCompatActivity {
     void show_msg(String msg)
     {
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+    }
+
+    void setOperator(Button btn, EditText text, String opr)
+    {
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (opr.contains("+"))
+                    operator = "+";
+                if (opr.contains("-"))
+                    operator = "-";
+                if (opr.contains("/"))
+                    operator = "/";
+                if (opr.contains("*"))
+                    operator = "*";
+                if (opr.contains("%"))
+                    operator = "%";
+                text.setText("");
+            }
+        });
     }
 
     @Override
@@ -60,22 +91,24 @@ public class MainActivity extends AppCompatActivity {
         Button rem = findViewById(R.id.rem);
         Button clear = findViewById(R.id.clear);
         EditText res = findViewById(R.id._res);
+        TextView _result = findViewById(R.id._result);
         TextView aabouqas = findViewById(R.id.aabouqas);
-        click(b0, res, "0");
-        click(b1, res, "1");
-        click(b2, res, "2");
-        click(b3, res, "3");
-        click(b4, res, "4");
-        click(b5, res, "5");
-        click(b6, res, "6");
-        click(b7, res, "7");
-        click(b8, res, "8");
-        click(b9, res, "9");
-        click(rem, res, "%");
-        click(mul, res, "*");
-        click(div, res, "/");
-        click(sub, res, "-");
-        click(sum, res, "+");
+        click(b0, res, "0", _result);
+        click(b1, res, "1", _result);
+        click(b2, res, "2", _result);
+        click(b3, res, "3", _result);
+        click(b4, res, "4", _result);
+        click(b5, res, "5", _result);
+        click(b6, res, "6", _result);
+        click(b7, res, "7", _result);
+        click(b8, res, "8", _result);
+        click(b9, res, "9", _result);
+//        click(rem, res, "%");
+//        click(mul, res, "*");
+//        click(div, res, "/");
+//        click(sub, res, "-");
+        click(sum, res, "+", _result);
+//        setOperator(sum, res, "+");
         res.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
         b0.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
         b1.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
@@ -134,58 +167,60 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 res.setTextSize(100);
                 res.setText("");
-
+                num1 = 0;
+                num2 = 0;
+                nums = 0;
+                operator = "";
             }
         });
         eq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int result = 0;
-                String str = res.getText().toString();
-                String[] parts = {""};
-                if (str.contains("+") && str.split("\\+").length == 2)
-                {
-                    parts = str.split("\\+");
-                    result = Integer.parseInt(parts[0]) + Integer.parseInt(parts[1]);
-                }
-                if (str.contains("-") && str.split("-").length == 2)
-                {
-                    parts = str.split("-");
-                    result = Integer.parseInt(parts[0]) - Integer.parseInt(parts[1]);
-                }
-                if (str.contains("*") && str.split("\\*").length == 2)
-                {
-                    parts = str.split("\\*");
-                    result = Integer.parseInt(parts[0]) * Integer.parseInt(parts[1]);
-                }
-                if (str.contains("%") && str.split("%").length == 2)
-                {
-                    parts = str.split("%");
-                    if (Integer.parseInt(parts[1]) == 0)
-                    {
-                        show_msg("\"Men don't divide by zero :)\"");
-                        show_msg("Be man ;)");
-                        res.setText("");
-                        return;
-                    }
-
-                    result = Integer.parseInt(parts[0]) % Integer.parseInt(parts[1]);
-                }
-                if (str.contains("/") && str.split("/").length == 2)
-                {
-                    parts = str.split("/");
-                    if (Integer.parseInt(parts[1]) == 0)
-                    {
-                        show_msg("Are you fucking serious :)");;
-                        show_msg("Be man ;)");
-                        res.setText("");
-                        return;
-                    }
-                    result = Integer.parseInt(parts[0]) / Integer.parseInt(parts[1]);
-                }
-                if (parts.length != 2)
-                    return;
-                res.setText(Integer.toString(result));
+//                int result = 0;
+//                String str = res.getText().toString();
+//                String[] parts = {""};
+//                if (str.contains("+") && str.split("\\+").length == 2)
+//                {
+//                    parts = str.split("\\+");
+//                    result = Integer.parseInt(parts[0]) + Integer.parseInt(parts[1]);
+//                }
+//                if (str.contains("-") && str.split("-").length == 2)
+//                {
+//                    parts = str.split("-");
+//                    result = Integer.parseInt(parts[0]) - Integer.parseInt(parts[1]);
+//                }
+//                if (str.contains("*") && str.split("\\*").length == 2)
+//                {
+//                    parts = str.split("\\*");
+//                    result = Integer.parseInt(parts[0]) * Integer.parseInt(parts[1]);
+//                }
+//                if (str.contains("%") && str.split("%").length == 2)
+//                {
+//                    parts = str.split("%");
+//                    if (Integer.parseInt(parts[1]) == 0)
+//                    {
+//                        show_msg("\"Men don't divide by zero :)\"");
+//                        show_msg("Be man ;)");
+//                        res.setText("");
+//                        return;
+//                    }
+//
+//                    result = Integer.parseInt(parts[0]) % Integer.parseInt(parts[1]);
+//                }
+//                if (str.contains("/") && str.split("/").length == 2)
+//                {
+//                    parts = str.split("/");
+//                    if (Integer.parseInt(parts[1]) == 0)
+//                    {
+//                        show_msg("Are you fucking serious :)");;
+//                        show_msg("Be man ;)");
+//                        res.setText("");
+//                        return;
+//                    }
+//                    result = Integer.parseInt(parts[0]) / Integer.parseInt(parts[1]);
+//                }
+//                if (parts.length != 2)
+//                    return;
             }
         });
     }
