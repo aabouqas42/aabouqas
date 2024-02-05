@@ -11,35 +11,47 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 public class MainActivity extends AppCompatActivity {
 
     private static int num1 = 0;
     private static int num2 = 0;
     private  boolean num1IsSet = false;
     private static int nums = 0;
-    private static String operator = "";
+    private static String operator = "0";
 
-    void click(Button btn, TextView res, String str, TextView to_show) {
+    void click(Button btn, TextView res, String str, TextView to_show, TextView showBin) {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!str.equals("+"))
+//                if (res.getText().toString().length() == 0 && to_show.getText().toString().equals("0") && str.equals("+") || str.equals("-") || str.equals("*") || str.equals("/") || str.equals("%"))
+//                        return ;
+                if (!str.equals("+") && !str.equals("-") && !str.equals("/") && !str.equals("*") && !str.equals("%"))
                     res.setText(res.getText().toString() + str);
-               if (str.equals("+"))
-               {
-                   nums = Integer.parseInt(res.getText().toString());
-                   res.setText("");
-               }
-               if (res.getText().toString().length() > 0)
-//                   to_show.setText(Integer.parseInt(res.getText().toString()));
-//               show_msg(res.getText().toString());
-//                if (num1 != 0 && operator.length() > 0)
-//                {
-//                    if (operator.equals("+"))
-//                        show_msg(String.valueOf(num1 + num2));
-//                }
+                if (str.equals("+") || str.equals("-") || str.equals("*") || str.equals("/") || str.equals("%"))
+                {
+                    operator = str;
+                    if (!num1IsSet)
+                        nums = Integer.parseInt(res.getText().toString());
+                    else
+                        nums = Integer.parseInt(to_show.getText().toString());
+                    res.setText("");
+                    num1IsSet = true;
+                    to_show.setText(String.valueOf(nums));
+                }
+                if (nums >= 0)
+                {
+                    showBin.setText(Integer.toBinaryString(Integer.parseInt(res.getText().toString())));
+                }
+               if (res.getText().toString().length() > 0 && num1IsSet && operator.equals("+"))
+                   to_show.setText(String.valueOf(nums + Integer.parseInt(res.getText().toString())));
+               else if (res.getText().toString().length() > 0 && num1IsSet && operator.equals("-"))
+                   to_show.setText(String.valueOf(nums - Integer.parseInt(res.getText().toString())));
+               else if (res.getText().toString().length() > 0 && num1IsSet && operator.equals("*"))
+                   to_show.setText(String.valueOf(nums * Integer.parseInt(res.getText().toString())));
+               else if (res.getText().toString().length() > 0 && num1IsSet && operator.equals("/"))
+                   to_show.setText(String.valueOf(nums / Integer.parseInt(res.getText().toString())));
+               else if (res.getText().toString().length() > 0 && num1IsSet && operator.equals("%"))
+                   to_show.setText(String.valueOf(nums % Integer.parseInt(res.getText().toString())));
             }
         });
     }
@@ -49,24 +61,9 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
     }
 
-    void setOperator(Button btn, EditText text, String opr)
+    void    init_ui()
     {
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (opr.contains("+"))
-                    operator = "+";
-                if (opr.contains("-"))
-                    operator = "-";
-                if (opr.contains("/"))
-                    operator = "/";
-                if (opr.contains("*"))
-                    operator = "*";
-                if (opr.contains("%"))
-                    operator = "%";
-                text.setText("");
-            }
-        });
+
     }
 
     @Override
@@ -91,24 +88,24 @@ public class MainActivity extends AppCompatActivity {
         Button rem = findViewById(R.id.rem);
         Button clear = findViewById(R.id.clear);
         EditText res = findViewById(R.id._res);
+        TextView bin = findViewById(R.id.binary);
         TextView _result = findViewById(R.id._result);
         TextView aabouqas = findViewById(R.id.aabouqas);
-        click(b0, res, "0", _result);
-        click(b1, res, "1", _result);
-        click(b2, res, "2", _result);
-        click(b3, res, "3", _result);
-        click(b4, res, "4", _result);
-        click(b5, res, "5", _result);
-        click(b6, res, "6", _result);
-        click(b7, res, "7", _result);
-        click(b8, res, "8", _result);
-        click(b9, res, "9", _result);
-//        click(rem, res, "%");
-//        click(mul, res, "*");
-//        click(div, res, "/");
-//        click(sub, res, "-");
-        click(sum, res, "+", _result);
-//        setOperator(sum, res, "+");
+        click(b0, res, "0", _result, bin);
+        click(b1, res, "1", _result, bin);
+        click(b2, res, "2", _result, bin);
+        click(b3, res, "3", _result, bin);
+        click(b4, res, "4", _result, bin);
+        click(b5, res, "5", _result, bin);
+        click(b6, res, "6", _result, bin);
+        click(b7, res, "7", _result, bin);
+        click(b8, res, "8", _result, bin);
+        click(b9, res, "9", _result, bin);
+        click(rem, res, "%", _result, bin);
+        click(mul, res, "*", _result, bin);
+        click(div, res, "/", _result, bin);
+        click(sub, res, "-", _result, bin);
+        click(sum, res, "+", _result, bin);
         res.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
         b0.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
         b1.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
@@ -167,10 +164,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 res.setTextSize(100);
                 res.setText("");
+                bin.setText("0");
+                _result.setText("0");
                 num1 = 0;
                 num2 = 0;
                 nums = 0;
-                operator = "";
+                num1IsSet = false;
+                operator = "0";
+
             }
         });
         eq.setOnClickListener(new View.OnClickListener() {
