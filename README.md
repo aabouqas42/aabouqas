@@ -1,1 +1,1 @@
-just a calucator in android :)
+just a calucator in android for devlopers :)
