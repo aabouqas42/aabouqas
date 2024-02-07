@@ -7,13 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static int num1 = 0;
-    private static int num2 = 0;
     private  boolean numsIsSet = false;
     private static int nums = 0;
     private static String operator = "0";
@@ -85,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
         Button mul = findViewById(R.id.sub);
         Button div = findViewById(R.id.div);
         Button sum = findViewById(R.id.plus);
-        Button eq = findViewById(R.id.eq);
         Button rem = findViewById(R.id.rem);
         Button clear = findViewById(R.id.clear);
         TextView input = findViewById(R.id.input);
@@ -97,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
         TextView t2 = findViewById(R.id.t2);
         TextView t3 = findViewById(R.id.t3);
         TextView t4 = findViewById(R.id.t4);
+        LinearLayout background = findViewById(R.id.background);
         click(b0, input, output, "0",  bin, hexa);
         click(b1, input, output, "1",  bin, hexa);
         click(b2, input, output, "2",  bin, hexa);
@@ -112,32 +111,31 @@ public class MainActivity extends AppCompatActivity {
         click(div, input, output, "/", bin, hexa);
         click(sub, input, output, "-", bin, hexa);
         click(sum, input, output, "+", bin, hexa);
-        input.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
-        b0.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
-        b1.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
-        b2.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
-        b3.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
-        b4.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
-        b5.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
-        b6.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
-        b7.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
-        b8.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
-        b9.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
-        div.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
-        sub.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
-        sum.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
-        mul.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
-        rem.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
-        eq.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
-        t1.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
-        t2.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
-        t3.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
-        t4.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
-        input.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
-        output.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
-        bin.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
-        hexa.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
-        clear.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
+        input.setTypeface(Typeface.createFromAsset(getAssets(), "font/m_plus_rounded_1c_bold.ttf"));
+        b0.setTypeface(Typeface.createFromAsset(getAssets(), "font/m_plus_rounded_1c_bold.ttf"));
+        b1.setTypeface(Typeface.createFromAsset(getAssets(), "font/m_plus_rounded_1c_bold.ttf"));
+        b2.setTypeface(Typeface.createFromAsset(getAssets(), "font/m_plus_rounded_1c_bold.ttf"));
+        b3.setTypeface(Typeface.createFromAsset(getAssets(), "font/m_plus_rounded_1c_bold.ttf"));
+        b4.setTypeface(Typeface.createFromAsset(getAssets(), "font/m_plus_rounded_1c_bold.ttf"));
+        b5.setTypeface(Typeface.createFromAsset(getAssets(), "font/m_plus_rounded_1c_bold.ttf"));
+        b6.setTypeface(Typeface.createFromAsset(getAssets(), "font/m_plus_rounded_1c_bold.ttf"));
+        b7.setTypeface(Typeface.createFromAsset(getAssets(), "font/m_plus_rounded_1c_bold.ttf"));
+        b8.setTypeface(Typeface.createFromAsset(getAssets(), "font/m_plus_rounded_1c_bold.ttf"));
+        b9.setTypeface(Typeface.createFromAsset(getAssets(), "font/m_plus_rounded_1c_bold.ttf"));
+        div.setTypeface(Typeface.createFromAsset(getAssets(),"font/m_plus_rounded_1c_bold.ttf"));
+        sub.setTypeface(Typeface.createFromAsset(getAssets(),"font/m_plus_rounded_1c_bold.ttf"));
+        sum.setTypeface(Typeface.createFromAsset(getAssets(),"font/m_plus_rounded_1c_bold.ttf"));
+        mul.setTypeface(Typeface.createFromAsset(getAssets(),"font/m_plus_rounded_1c_bold.ttf"));
+        rem.setTypeface(Typeface.createFromAsset(getAssets(),"font/m_plus_rounded_1c_bold.ttf"));
+        t1.setTypeface(Typeface.createFromAsset(getAssets(), "font/m_plus_rounded_1c_bold.ttf"));
+        t2.setTypeface(Typeface.createFromAsset(getAssets(), "font/m_plus_rounded_1c_bold.ttf"));
+        t3.setTypeface(Typeface.createFromAsset(getAssets(), "font/m_plus_rounded_1c_bold.ttf"));
+        t4.setTypeface(Typeface.createFromAsset(getAssets(), "font/m_plus_rounded_1c_bold.ttf"));
+        input.setTypeface(Typeface.createFromAsset(getAssets(), "font/m_plus_rounded_1c_bold.ttf"));
+        output.setTypeface(Typeface.createFromAsset(getAssets(), "font/m_plus_rounded_1c_bold.ttf"));
+        bin.setTypeface(Typeface.createFromAsset(getAssets(), "font/m_plus_rounded_1c_bold.ttf"));
+        hexa.setTypeface(Typeface.createFromAsset(getAssets(), "font/m_plus_rounded_1c_bold.ttf"));
+        clear.setTypeface(Typeface.createFromAsset(getAssets(),"font/m_plus_rounded_1c_bold.ttf"));
         GradientDrawable gradientDrawable = new GradientDrawable();
         gradientDrawable.setShape(GradientDrawable.RECTANGLE);
         gradientDrawable.setColor(Color.parseColor("#023e8a"));
@@ -163,10 +161,9 @@ public class MainActivity extends AppCompatActivity {
         drawable.setShape(GradientDrawable.RECTANGLE);
         drawable.setCornerRadius(50);
         drawable.setColor(Color.parseColor("#dd1c1a"));
-        eq.setBackground(drawable);
         clear.setBackground(drawable);
         input.setClickable(false);
-        aabouqas.setTypeface(Typeface.createFromAsset(getAssets(), "font/roboto_slab.ttf"));
+        aabouqas.setTypeface(Typeface.createFromAsset(getAssets(), "font/m_plus_rounded_1c_bold.ttf"));
         aabouqas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -180,8 +177,6 @@ public class MainActivity extends AppCompatActivity {
                 bin.setText("0");
                 hexa.setText("0");
                 output.setText("0");
-                num1 = 0;
-                num2 = 0;
                 nums = 0;
                 numsIsSet = false;
                 operator = "0";

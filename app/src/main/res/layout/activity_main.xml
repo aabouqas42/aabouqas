@@ -2,11 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
     android:gravity="bottom|center"
     android:orientation="vertical"
+    android:padding="5dp"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -35,8 +37,9 @@
                     android:id="@+id/t1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="10dp"
                     android:text="in"
+                    android:textColor="#FFFFFF"
                     android:textSize="20sp" />
             </LinearLayout>
 
@@ -67,11 +70,11 @@
                     android:id="@+id/t2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="10dp"
                     android:text="res"
+                    android:textColor="#FFFFFF"
                     android:textSize="20sp" />
             </LinearLayout>
-
             <TextView
                 android:id="@+id/output"
                 android:layout_width="wrap_content"
@@ -89,7 +92,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center|left"
@@ -99,8 +102,9 @@
                     android:id="@+id/t3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="10dp"
                     android:text="bin"
+                    android:textColor="#FFFFFF"
                     android:textSize="20sp" />
             </LinearLayout>
 
@@ -130,8 +134,9 @@
                     android:id="@+id/t4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="10dp"
                     android:text="hexa"
+                    android:textColor="#FFFFFF"
                     android:textSize="20sp" />
             </LinearLayout>
 
@@ -188,6 +193,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="1"
+                android:textColor="#FFFFFF"
                 android:textSize="24sp" />
 
             <Button
@@ -198,6 +204,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="2"
+                android:textColor="#FFFFFF"
                 android:textSize="24sp" />
 
             <Button
@@ -208,6 +215,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="3"
+                android:textColor="#FFFFFF"
                 android:textSize="24sp" />
 
         </LinearLayout>
@@ -227,6 +235,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="4"
+                android:textColor="#FFFFFF"
                 android:textSize="24sp" />
 
             <Button
@@ -237,6 +246,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="5"
+                android:textColor="#FFFFFF"
                 android:textSize="24sp" />
 
             <Button
@@ -247,6 +257,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="6"
+                android:textColor="#FEFEFE"
                 android:textSize="24sp" />
 
         </LinearLayout>
@@ -266,6 +277,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="7"
+                android:textColor="#FFFFFF"
                 android:textSize="24sp" />
 
             <Button
@@ -276,6 +288,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="8"
+                android:textColor="#FFFFFF"
                 android:textSize="24sp" />
 
             <Button
@@ -286,6 +299,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="9"
+                android:textColor="#FFFFFF"
                 android:textSize="24sp" />
 
         </LinearLayout>
@@ -322,17 +336,9 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="0"
+                android:textColor="#FFFFFF"
                 android:textSize="24sp" />
 
-            <Button
-                android:id="@+id/eq"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="="
-                android:textSize="24sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -358,7 +364,7 @@
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="-"
+                android:text="−"
                 android:textSize="24sp" />
 
             <Button
@@ -378,7 +384,7 @@
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="*"
+                android:text="×"
                 android:textSize="24sp" />
 
             <Button
@@ -388,7 +394,7 @@
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="/"
+                android:text="÷"
                 android:textSize="24sp" />
 
         </LinearLayout>
@@ -414,6 +420,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
         </LinearLayout>
     </LinearLayout>
 
